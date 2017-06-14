@@ -10,9 +10,12 @@ class App extends Component {
     force_update: 0
   };
   control = GameController();
-  game = Game( {rows:10, cols:10, cells:[[3,4],[4,3],[4,4],[4,5]]});
+  game = Game( {rows:30, cols:30, cells:[[3,4],[4,3],[4,4],[4,5]]});
   componentWillMount = () => {
     window.addEventListener( "game_tick", this.onStep);
+  };
+  componentDidMount = () => {
+    this.control.start();
   };
   componentWillUnmount = () => {
     window.removeEventListener( "game_tick", this.onStep);
@@ -44,6 +47,7 @@ class App extends Component {
         <h1>Game of Life</h1>
         <Hud onStart={this.onStart} onPause={this.onPause}
           onStep={this.onStep} onClear={this.onClear}
+          generation={this.control.getGeneration()}
         />
         <Board cells={this.game.getBoard()} cellClicked={this.handleCellClick}/>
       </div>
