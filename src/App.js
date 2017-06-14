@@ -10,7 +10,7 @@ class App extends Component {
     force_update: 0
   };
   control = GameController();
-  game = Game( {rows:30, cols:30, cells:[[3,4],[4,3],[4,4],[4,5]]});
+  game = Game( {rows:50, cols:50, cells:[[3,4],[4,3],[4,4],[4,5]]});
   componentWillMount = () => {
     window.addEventListener( "game_tick", this.onStep);
   };
@@ -42,6 +42,9 @@ class App extends Component {
     this.setState( {force_update: !this.state.force_update});
   };
   render() {
+    const container = {
+      marginTop: "10px"
+    };
     return (
       <div className="App">
         <h1>Game of Life</h1>
@@ -49,7 +52,9 @@ class App extends Component {
           onStep={this.onStep} onClear={this.onClear}
           generation={this.control.getGeneration()}
         />
-        <Board cells={this.game.getBoard()} cellClicked={this.handleCellClick}/>
+        <div style={container}>
+          <Board cells={this.game.getBoard()} cellClicked={this.handleCellClick}/>
+        </div>
       </div>
     );
   }
