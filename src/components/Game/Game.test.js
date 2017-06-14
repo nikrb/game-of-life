@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '../util.js';
 import Game from './Game';
 
 it( 'creates board cells', () => {
