@@ -1,6 +1,10 @@
 import React from 'react';
+import Cell from './Cell';
 
 export default class Board extends React.Component {
+  handleClick = (row, col, alive) => {
+    console.log( `cell clicked (${row},${col}) colour[${alive}]`)
+  };
   render = () => {
     console.log( "board:", this.props.cells);
     const table_row = {
@@ -9,16 +13,14 @@ export default class Board extends React.Component {
       flexGrow: "0",
       flexWrap: "nowrap"
     };
-    const table_cell = {
-      border: "1px solid rgba( 127,127,127,0.8)"
-    };
     const rows = this.props.cells.map( ( row, i) => {
       return (
         <div key={i} style={table_row}>{
           row.map( (col, j) => {
             const colour = (col)?"black":"white";
             return (
-              <div key={i*100+j} style={{...table_cell, width:"8px", height:"8px", backgroundColor:colour}}/>
+              <Cell key={i*100+j}
+                handleClick={this.handleClick} row={i} col={j} colour={colour} />
             );
           })
         }</div>
