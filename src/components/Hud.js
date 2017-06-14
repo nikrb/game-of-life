@@ -14,15 +14,16 @@ export default class Hud extends React.Component {
     this.props.onStep();
   };
   render = () => {
+    const text_style = {
+      marginLeft: "1em"
+    };
     return (
       <div>
         <button onClick={this.handleStart} >Start</button>
         <button onClick={this.handlePause} >Pause</button>
         <button onClick={this.handleClear} >Clear</button>
         <button onClick={this.handleStep} >Step</button>
-        <div>
-          Generations: {this.props.generation}
-        </div>
+        <span style={text_style}>Generations: {this.props.generation}</span>
       </div>
     );
   };
