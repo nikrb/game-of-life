@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Hud from './components/Hud';
+import Board from './components/Board';
+import Game from './components/Game/Game';
 
 class App extends Component {
+  state = {
+    game: Game( {rows:10, cols:10, cells:[[3,4],[4,3],[4,4],[4,5]]})
+  };
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Game of Life</h1>
+        <Hud/>
+        <Board cells={this.state.game.getBoard()}/>
       </div>
     );
   }
