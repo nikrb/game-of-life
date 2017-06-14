@@ -8,7 +8,10 @@ export default class Hud extends React.Component {
     console.log( "pause");
   };
   handleClear = () => {
-    console.log( "clear");
+    this.props.onClear();
+  };
+  handleStep = () => {
+    this.props.onStep();
   };
   render = () => {
     return (
@@ -16,6 +19,7 @@ export default class Hud extends React.Component {
         <button onClick={this.handleStart} >Start</button>
         <button onClick={this.handlePause} >Pause</button>
         <button onClick={this.handleClear} >Clear</button>
+        <button onClick={this.handleStep} >Step</button>
         <div>
           Generations: {this.props.generation}
         </div>

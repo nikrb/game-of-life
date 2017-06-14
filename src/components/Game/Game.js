@@ -3,6 +3,9 @@ export default function Game( init) {
   const clear = () => {
     return Array(rows).fill(0).map( row => Array(cols).fill(0))
   };
+  const clearBoard = () => {
+    cells = clear();
+  };
   const setCell = (row, col, alive) => {
     cells[row][col] = alive;
   };
@@ -53,7 +56,7 @@ export default function Game( init) {
   }
 
   // public exports
-  that.clear = clear;
+  that.clear = clearBoard;
   that.getBoard = getBoard;
   that.setCell = setCell;
   that.nextGeneration = tick;

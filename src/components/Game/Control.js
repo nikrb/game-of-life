@@ -17,7 +17,7 @@ export default function Control() {
   };
   // private init
   const that = {};
-  const tick_time = 1000;
+  let tick_time = 1000;
   let interval_id = 0;
 
   // public export

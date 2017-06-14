@@ -3,10 +3,10 @@ import Cell from './Cell';
 
 export default class Board extends React.Component {
   handleClick = (row, col, alive) => {
-    console.log( `cell clicked (${row},${col}) colour[${alive}]`)
+    const live_status = (alive==="white")?0:1;
+    this.props.cellClicked( row, col, live_status);
   };
   render = () => {
-    console.log( "board:", this.props.cells);
     const table_row = {
       display: "flex",
       flexDirection: "row",
