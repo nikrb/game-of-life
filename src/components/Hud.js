@@ -2,10 +2,10 @@ import React from 'react';
 
 export default class Hud extends React.Component {
   handleStart = () => {
-    console.log( "start");
+    this.props.onStart();
   };
   handlePause = () => {
-    console.log( "pause");
+    this.props.onPause();
   };
   handleClear = () => {
     this.props.onClear();

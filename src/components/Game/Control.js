@@ -13,7 +13,7 @@ export default function Control() {
     tick_time = new_time_ms;
   };
   const tick = () => {
-    dispatchEvent( Event( "game_tick"));
+    dispatchEvent( new CustomEvent( "game_tick"));
   };
   // private init
   const that = {};

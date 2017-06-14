@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../util.js';
 import Game from './Game';
+import '../util.js';
 
 it( 'creates board cells', () => {
   const rows = 3, cols = 4;
