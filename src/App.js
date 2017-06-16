@@ -13,6 +13,7 @@ class App extends Component {
   game = Game( {rows:50, cols:50}); // , cells:[[3,4],[4,3],[4,4],[4,5]]});
   componentWillMount = () => {
     window.addEventListener( "game_tick", this.onStep);
+    this.game.generate();
     this.setState( { board_cells: this.game.getBoard()})
   };
   componentDidMount = () => {
