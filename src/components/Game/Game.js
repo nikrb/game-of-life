@@ -44,6 +44,14 @@ export default function Game( init) {
   const getBoard = () => {
     return cells;
   };
+  const generate = () => {
+    // generate random board
+    cells = cells.map( (row) => {
+      return row.map( (cell) => {
+        return (Math.random() < 0.5)?0:1;
+      });
+    });
+  };
 
   // private init
   const that = {};
@@ -53,19 +61,13 @@ export default function Game( init) {
     init.cells.forEach( (cell) => {
       setCell( cell[0], cell[1], 1);
     });
-  } else {
-    // generate random board
-    cells = cells.map( (row) => {
-      return row.map( (cell) => {
-        return (Math.random() < 0.5)?0:1;
-      });
-    });
   }
 
   // public exports
   that.clear = clearBoard;
   that.getBoard = getBoard;
   that.setCell = setCell;
+  that.generate = generate;
   that.nextGeneration = tick;
   that.getNeighbours = getNeighbours;
   that.countLive = countLive;
