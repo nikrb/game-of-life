@@ -7,12 +7,13 @@ import GameController from './components/Game/Control';
 
 class App extends Component {
   state = {
-    force_update: 0
+    board_cells: []
   };
   control = GameController();
   game = Game( {rows:50, cols:50}); // , cells:[[3,4],[4,3],[4,4],[4,5]]});
   componentWillMount = () => {
     window.addEventListener( "game_tick", this.onStep);
+    this.setState( { board_cells: this.game.getBoard()})
   };
   componentDidMount = () => {
     this.control.start();
@@ -25,7 +26,7 @@ class App extends Component {
     console.log( `handleCellClick (${row},${col}) alive[${alive}]`);
     const new_state = alive?0:1;
     this.game.setCell( row, col, new_state);
-    this.setState( {force_update: !this.state.force_update});
+    this.setState( {board_cells: this.game.getBoard()});
   };
   onStart = () => {
     this.control.start();
@@ -35,11 +36,11 @@ class App extends Component {
   };
   onStep = () => {
     this.game.nextGeneration();
-    this.setState( { force_update: !this.state.force_update});
+    this.setState( { board_cells: this.game.getBoard()});
   };
   onClear = () => {
     this.game.clear();
-    this.setState( {force_update: !this.state.force_update});
+    this.setState( {board_cells: this.game.getBoard()});
   };
   render() {
     const container = {
@@ -53,7 +54,7 @@ class App extends Component {
           generation={this.control.getGeneration()}
         />
         <div style={container}>
-          <Board cells={this.game.getBoard()} cellClicked={this.handleCellClick}/>
+          <Board cells={this.state.board_cells} cellClicked={this.handleCellClick}/>
         </div>
       </div>
     );
