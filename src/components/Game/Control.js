@@ -1,8 +1,10 @@
 export default function Control() {
   const start = () => {
-    generation_count = 0;
-    tick();
-    interval_id = setInterval( tick, tick_time);
+    if( interval_id === 0){
+      generation_count = 0;
+      tick();
+      interval_id = setInterval( tick, tick_time);
+    }
   };
   const pause = () => {
     if( interval_id){
