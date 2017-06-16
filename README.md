@@ -1,4 +1,4 @@
-freecodecamp project for the game of life.
+freecodecamp project for the game of life. [demo](https://nikrb.github.io/game-of-life)
 
 rules:
 
