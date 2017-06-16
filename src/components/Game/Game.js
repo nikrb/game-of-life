@@ -53,6 +53,13 @@ export default function Game( init) {
     init.cells.forEach( (cell) => {
       setCell( cell[0], cell[1], 1);
     });
+  } else {
+    // generate random board
+    cells = cells.map( (row) => {
+      return row.map( (cell) => {
+        return (Math.random() < 0.5)?0:1;
+      });
+    });
   }
 
   // public exports
